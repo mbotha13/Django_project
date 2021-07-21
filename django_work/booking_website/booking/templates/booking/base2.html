@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    
+    <style>
+      body{
+        background-image: url("./body_back.jpg");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        background-color: #ddd;
+      }
+      .header{
+          background-color: #212529;
+          height: 54px;
+      }
+      .content{
+          color: antiquewhite;
+          min-height: 500px;
+      }
+      .main-content{
+          color: antiquewhite;
+          background-color: #212529;
+          min-height: 500px;
+      }
+      .footer{
+          color: antiquewhite;
+          background-color: #212529;
+          height: 40px;
+      }
+    </style>
+    <title>WTC Booking</title>
+  </head>
+  <body>
+    <!--
+    <div class="container-fluid">
+        <div class="header">
+          <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#">We Think Code</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                  <a class="nav-link active" aria-current="page" href="#">Home</a>
+                  <a class="nav-link" href="#">Features</a>
+                  <a class="nav-link" href="#">Pricing</a>
+                  <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                </div>
+              </div>
+            </div>
+          </nav>
+
+
+        </div>-->
+        {% include 'booking/navbar.html' %}
+
+        <div class="content">
+            <div class="row">
+                <div class="col-3 sidebar"><!--left sidebar start-->
+                    left sidebar
+                </div><!--left sidebar end-->
+                <div class="col-6 main-content"><!--main content starts-->
+                    Main content
+
+                    
+
+                      {% block content %}
+
+
+                    {% endblock %}
+                </div><!--main content ends-->
+                <div class="col-3 sidebar"><!--right sidebar start-->
+                    right sidebar
+                </div><!--right sidebar end-->
+            </div>
+        </div>
+
+        <div class="footer">
+            footer section
+
+        </div>
+    </div>
+
+
+      
+
+<!--
+
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #0093FF;">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Navbar</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Features</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Pricing</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    <div class="container-fluid">
+   <div style="background-image: url(https://www.payspace.com/wp-content/uploads/2016/02/seo-wethinkcode.png);height: 100vh;width: 100%;"></div>
+    </div>
+
+-->
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+   
+  </body>
+</html>
