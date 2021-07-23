@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
-from .models import booking
+from .models import Johannesburg_booking
 from .forms import add_bookingForm
 
 # Create your views here.

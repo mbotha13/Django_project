@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import ModelForm
-from .models import booking
+from .models import Johannesburg_booking
 
 
 
@@ -8,7 +8,7 @@ from .models import booking
 
 class add_bookingForm(ModelForm):
 	class Meta:
-		model = booking
+		model = Johannesburg_booking
 		fields =('bootcamp_type','name','email', 'bootcamp_month', 'camp_date')
 		labels ={
 			'name': '',
