@@ -24,11 +24,19 @@ with smtplib.SMTP('smtp.gmail.com', 587) as smtp:
     smtp.ehlo()
     
     smtp.login(EMAIL_ADRESS, EMAIL_PASSWORD)
-    name = Johannesburg_booking.name
-    mail= Johannesburg_booking.email
-    subject = 'Booking Confirmed'
-    body = f'Hello {name}'
+    username = Johannesburg_booking.objects.values_list('name', flat=True)
+    email = Johannesburg_booking.objects.values_list('email', flat=True)
+    i=1
+    for name in username:
     
-    msg = f'Subject: {subject}\n\n{body}'
-    
-    smtp.sendmail(EMAIL_ADRESS, 'bothamarc9@gmail.com', msg)
+        mail= Johannesburg_booking.email
+        subject = 'Booking Confirmed'
+        body = f'Hello {name}'
+        
+        msg = f'Subject: {subject}\n\n{body}'
+        for mail in email:
+            smtp.sendmail(EMAIL_ADRESS, 'bothamarc9@gmail.com', msg)
+            if i==1:
+                break
+        if i == 1:
+            break

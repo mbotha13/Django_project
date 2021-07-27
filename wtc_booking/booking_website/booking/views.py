@@ -12,11 +12,11 @@ from django.template.loader import render_to_string
 def home(request):
 	submitted = False
 	if request.method == "POST":
-		booking_form = Johannesburg_booking()
+		# booking_form = Johannesburg_booking()
 		form = add_bookingForm(request.POST)
 		if form.is_valid():
 			form.save()
-			booking_form.save()
+			# booking_form.save()
 			return HttpResponseRedirect('/add_booking?submitted=True')
 	else:
 		form = add_bookingForm
