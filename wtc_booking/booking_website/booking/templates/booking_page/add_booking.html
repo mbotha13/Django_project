@@ -1,0 +1,33 @@
+{% extends 'booking_page/base.html' %}
+
+{% block content %}
+	<h1>booking</h1>
+
+	<br/><br/>
+<center>
+	{% if submitted %}
+			Your booking was submitted
+			Successfully!!
+		{% else%}
+			<div class="form-group">
+			<form action="" method="POST">
+				{% csrf_token %}
+				
+				<!--<fieldset>
+				    <legend>{{ form.bootcamp_type.label }}</legend>
+				    
+				    {% for radio in form.bootcamp_type %}
+				    <div class="myradio">
+				        {{ radio }}
+				    </div>
+				    {% endfor %}
+				</fieldset>-->
+				{{ form.as_p }}
+
+				<input type="submit" value="Submit" class="btn btn-secondary">
+			</form>
+			</div>
+	{% endif %}
+
+</center>
+{% endblock %}
