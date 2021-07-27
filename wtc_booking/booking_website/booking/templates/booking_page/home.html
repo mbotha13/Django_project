@@ -2,14 +2,17 @@
 
 {% block content %}
 	<center>
-		<h1>Make booking</h1>
+		Marc
+		<h1>Make Booking</h1>
 		<br/><br/>
+		
 		<form action="" method=POST>
 			{% csrf_token %}
 
 			{{ form.as_p }}
-
 			<input type="submit" value= "Submit" class="btn-secondary">
 		</form>
+
+		
 	</center>
 {% endblock %}

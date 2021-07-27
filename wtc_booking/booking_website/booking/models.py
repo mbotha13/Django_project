@@ -16,7 +16,7 @@ class Johannesburg_booking(models.Model):
 	camp_date =models.CharField('bootcamp date', max_length=10)
 
 	def __str__(self):
-		return self.name
+		return name
 
 class Cape_Town_booking(models.Model):
 	name = models.CharField('student name', max_length=55)
