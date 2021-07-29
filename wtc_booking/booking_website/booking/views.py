@@ -9,7 +9,11 @@ def home(request):
 	if request.method == "POST":
 		form = add_bookingForm(request.POST)
 		if form.is_valid():
-			form.save()
+			user_info = form.save(commit=False)
+			user_info.user= request.user
+			user_info.save()
+
+
 			return HttpResponseRedirect('/add_booking?submitted=True')
 	else:
 		form = add_bookingForm
