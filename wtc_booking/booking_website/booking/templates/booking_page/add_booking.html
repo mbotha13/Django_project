@@ -5,28 +5,40 @@
 
 	<br/><br/>
 <center>
-	{% if submitted %}
-			Your booking was submitted
-			Successfully!!
+	{% if user.is_authenticated %}
+		{% if submitted %}
+				Your booking was submitted
+				Successfully!!
 		{% else%}
 			<div class="form-group">
-			<form action="" method="POST">
+			<form method="POST" id="bookingForm" data-date-url = "{% url 'ajax_load_date' %}">
 				{% csrf_token %}
-				
-				<!--<fieldset>
-				    <legend>{{ form.bootcamp_type.label }}</legend>
-				    
-				    {% for radio in form.bootcamp_type %}
-				    <div class="myradio">
-				        {{ radio }}
-				    </div>
-				    {% endfor %}
-				</fieldset>-->
 				{{ form.as_p }}
 
 				<input type="submit" value="Submit" class="btn btn-secondary">
 			</form>
 			</div>
+
+			<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+			<script>
+				$("#id_month").change(function(){
+					var url = $("#bookingForm").attr("data-date-url");
+					var monthId = $(this).val();
+
+					$.ajax({
+						url: url,
+						data: {
+							'month_id': monthId
+						},
+						succss: function (data){
+							$("#id_date").html(data);
+						}
+					});
+				});
+			</script>
+		{% endif %}
+	{% else %}
+	you are not allowed here!!! (please login)
 	{% endif %}
 
 </center>
