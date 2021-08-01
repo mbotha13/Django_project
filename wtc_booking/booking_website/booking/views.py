@@ -15,16 +15,11 @@ def home(request):
 		# booking_form = Johannesburg_booking()
 		form = add_bookingForm(request.POST)
 		if form.is_valid():
-<<<<<<< HEAD
-			form.save()
-			# booking_form.save()
-=======
 			user_info = form.save(commit=False)
 			user_info.user= request.user
 			user_info.save()
 
 
->>>>>>> origin/knkosi
 			return HttpResponseRedirect('/add_booking?submitted=True')
 	else:
 		form = add_bookingForm
