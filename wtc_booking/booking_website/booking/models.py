@@ -14,17 +14,17 @@ class Month(models.Model):
 		return self.name
 
 class Date(models.Model):
-	moth = models.ForeignKey(Month, on_delete = models.CASCADE)
+	month = models.ForeignKey(Month, on_delete = models.CASCADE)
 	name = models.CharField(max_length = 10)
 
 	def __str__(self):
-		return self.name 
+		return self.month.name + '	'+  self.name 
 
 class Johannesburg_booking(models.Model):
 	user = models.ForeignKey(User, on_delete= models.CASCADE)
 	bootcamp_type = models.CharField('bootcamp_type',max_length=7,choices=BOOTCAMP_CHOICES,default='Live')
-	month = models.ForeignKey(Month, on_delete = models.SET_NULL, blank = True, null = True)
-	date =models.ForeignKey(Date, on_delete = models.SET_NULL, blank = True, null = True)
+	month = models.ForeignKey(Month, on_delete = models.SET_NULL, null = True)
+	date =models.ForeignKey(Date, on_delete = models.SET_NULL, null = True)
 
 	def __str__(self):
 		return self.user.username
