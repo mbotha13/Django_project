@@ -1,2 +1,0 @@
-user@computer ~ $ cat mycontacts.txt
-marc mbotha@student.wethinkcode.co.za
