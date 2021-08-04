@@ -1,37 +1,10 @@
-
+{% extends 'booking_page/base.html' %}
 {% load static %}
 {% load crispy_forms_tags %}
 
 
 
-
-
-
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Login</title>
-    <style>
-        h2{
-            color: skyblue;
-        }
-        button{
-            width: 100;
-            height: 50px;
-            color:black;
-            
-        }
-        body
-        {
-            background-color:lavender;
-        }
-
-    </style>
-
-</head>
-
-
-<body>
+{% block content %}
 <h1>Login</h1>
 <div>
     <div class="container">
@@ -41,8 +14,8 @@
       {% endfor %}
     {% endif %}
     </div>
-    {% block content %}
-    {% endblock content %}
+    
+    
   </div>
 
   <div class="container" style="margin-top: 30px;">
@@ -50,7 +23,8 @@
       {% csrf_token %}
       <fieldset class="form-group">
           <legend class="border-bottom mb-4" style="color: white;">Sign In Now</legend>
-          {{ form|crispy }}
+          {{ crispy }}
+          {{ form.as_p }}
       </fieldset>
       <div class="form-group" id="signup-button">
           <button class="btn ">Sign In</button>
@@ -60,7 +34,6 @@
       </div>
     </form>
     </div>
+{% endblock %}
 
-</body>
-</html>
 
