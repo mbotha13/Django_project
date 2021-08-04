@@ -127,6 +127,11 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+<<<<<<< HEAD
+=======
+MEDIA_URL = '/images/'
+
+>>>>>>> 1a6facb7e71889a5a99a011a1df96316abc880c1
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR,'static')
 ]
@@ -135,6 +140,7 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 LOGIN_REDIRECT_URL = 'add_booking'
 
+<<<<<<< HEAD
 LOGIN_URL = 'login'
 
 EMAIL_BACKEND = 'django.core.mail.backends.locmem.EmailBackend'
@@ -144,3 +150,6 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'wtcbooking10@gmail.com'
 EMAIL_HOST_PASS = 'bookingsystem10'
 
+=======
+LOGIN_URL = 'login'
+>>>>>>> 1a6facb7e71889a5a99a011a1df96316abc880c1

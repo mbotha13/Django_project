@@ -22,4 +22,8 @@ urlpatterns = [
     path('users/',include('users.urls')),
     
 
+<<<<<<< HEAD
 ]
+=======
+]
+>>>>>>> 1a6facb7e71889a5a99a011a1df96316abc880c1
