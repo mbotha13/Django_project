@@ -1,0 +1,83 @@
+{% extends 'booking_page/base.html' %}
+
+{% block content %}
+	
+	<br/><br/>
+<center>
+	{% if user.is_authenticated %}
+		{% if submitted %}
+				Thank you {{ username }}<br>
+				Your booking was submitted
+				Successfully!! and email will be sent to you 
+		{% else%}
+		<h3>Selection bootcamp and interview</h3><br>
+
+		Our selection Bootcamp is a 6-day immersive learning process where we’ll introduce you to programming concepts and assess your ability to grasp these concepts. Based on the outcome of your bootcamp performance, you may be shortlisted for a final interview where we’ll assess your social and cultural fit for our organization.
+
+		You need to choose one of the campuses below based on your location to book for the bootcamp<br><br><br>
+		<div main-content-tabs>
+		<ul class="nav nav-pills mb-3 justify-content-center" id="pills-tab" role="tablist">
+		  <li class="nav-item" role="presentation">
+		    <button class="nav-link active" id="pills-Johannesburg-tab" data-bs-toggle="pill" data-bs-target="#pills-Johannesburg" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Johannesburg</button>
+		  </li>
+		  <li class="nav-item" role="presentation">
+		    <button class="nav-link" id="pills-Cape_Town-tab" data-bs-toggle="pill" data-bs-target="#pills-Cape_Town" type="button" role="tab" aria-controls="pills-Cape_Town" aria-selected="false">Cape Town</button>
+		  </li>
+		  <li class="nav-item" role="presentation">
+		    <button class="nav-link" id="pills-Durban-tab" data-bs-toggle="pill" data-bs-target="#pills-Durban" type="button" role="tab" aria-controls="pills-Durban" aria-selected="false">Durban</button>
+		  </li>
+		</ul>
+		<div class="tab-content col-6" id="pills-tabContent" >
+		  	<div class="tab-pane fade show active" id="pills-Johannesburg" role="tabpanel" aria-labelledby="pills-Johannesburg-tab">
+			  	<div class="form-group">
+				<form action= "/add_booking" method="POST" id="add_bookingForm" >
+
+					{% csrf_token %}
+					{{ form.as_p }}
+
+					<input type="submit" value="Submit" class="btn btn-secondary">
+				</form>
+				</div>
+			</div>
+	  		<div class="tab-pane fade" id="pills-Cape_Town" role="tabpanel" aria-labelledby="pills-Cape_Town-tab">
+			  	<div class="form-group">
+				<form action = "/CapeBooking" method="POST" id="CapeBookingForm" >
+
+					{% csrf_token %}
+					{{ form.as_p }}
+
+					<input type="submit" value="Submit" class="btn btn-secondary">
+				</form>
+				</div>
+			</div>
+		  	<div class="tab-pane fade" id="pills-Durban" role="tabpanel" aria-labelledby="pills-Durban-tab">
+			  	<div class="form-group">
+				<form action= "/DurbanBooking" method="POST" id="DurbanBookingForm" >
+
+					{% csrf_token %}
+					{{ form.as_p }}
+
+					<input type="submit" value="Submit" class="btn btn-secondary">
+				</form>
+				</div>
+			</div>
+		</div>
+			
+
+
+		{% endif %}
+	{% else %}
+	<center>
+	<h2>WELCOME</h2>
+	<br>
+	<h3>to the</h3>
+	<br>
+	<h1>WE THINK CODE</h1>
+	<br>
+	<h3>bootcamp bookinng system </h3>
+	<p>We are glad that you have chosen to futhur your education with us.<br>We'd like to wish you luck for the bootcamp</p>
+	</center>
+	{% endif %}
+
+</center>
+{% endblock %}
