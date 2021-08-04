@@ -23,7 +23,6 @@ class Date(models.Model):
 class Johannesburg_booking(models.Model):
 	user = models.ForeignKey(User, on_delete= models.CASCADE)
 	bootcamp_type = models.CharField('bootcamp_type',max_length=7,choices=BOOTCAMP_CHOICES,default='Live')
-	month = models.ForeignKey(Month, on_delete = models.SET_NULL, null = True)
 	date =models.ForeignKey(Date, on_delete = models.SET_NULL, null = True)
 
 	def __str__(self):
@@ -32,7 +31,6 @@ class Johannesburg_booking(models.Model):
 class Cape_Town_booking(models.Model):
 	user = models.ForeignKey(User, on_delete= models.CASCADE)
 	bootcamp_type = models.CharField('bootcamp_type',max_length=7,choices=BOOTCAMP_CHOICES,default='Live')
-	month = models.ForeignKey(Month, on_delete = models.SET_NULL, blank = True, null = True)
 	date =models.ForeignKey(Date, on_delete = models.SET_NULL, blank = True, null = True)
 
 	def __str__(self):
@@ -41,7 +39,6 @@ class Cape_Town_booking(models.Model):
 class Durban_booking(models.Model):
 	user = models.ForeignKey(User, on_delete= models.CASCADE)
 	bootcamp_type = models.CharField('bootcamp_type',max_length=7,choices=BOOTCAMP_CHOICES,default='Live')
-	month = models.ForeignKey(Month, on_delete = models.SET_NULL, blank = True, null = True)
 	date =models.ForeignKey(Date, on_delete = models.SET_NULL, blank = True, null = True)
 
 	def __str__(self):

@@ -1,0 +1,12 @@
+{% extends 'booking_page/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+<center>
+	<h1>Profile</h1>
+</center><br><br>
+    <h3>Username:  {{user.username}}</h3>
+    <h3>{{user.email}}</h3>
+{% endblock %}
