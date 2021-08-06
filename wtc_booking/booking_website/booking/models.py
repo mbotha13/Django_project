@@ -11,14 +11,14 @@ class Month(models.Model):
 	name = models.CharField(max_length=30)
 
 	def __str__(self):
-		return self.name
+		return self.name 
 
 class Date(models.Model):
 	month = models.ForeignKey(Month, on_delete = models.CASCADE)
 	name = models.CharField(max_length = 10)
 
 	def __str__(self):
-		return self.month.name + '	'+  self.name 
+		return self.month.name + ' '+  self.name 
 
 class Johannesburg_booking(models.Model):
 	user = models.ForeignKey(User, on_delete= models.CASCADE)

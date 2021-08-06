@@ -6,5 +6,6 @@ urlpatterns = [
     path('add_booking', views.booking_page, name='add_booking'),
     path('CapeBooking', views.CapeBookingPage, name='CapeBooking'),
     path('DurbanBooking', views.DurbanBookingPage, name='DurbanBooking'),
+    path('get_csv', views.GetCsv, name='get_csv'),
   
 ]

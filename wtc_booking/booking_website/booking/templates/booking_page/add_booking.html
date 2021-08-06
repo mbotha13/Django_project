@@ -29,26 +29,36 @@
 		</ul>
 		<div class="tab-content col-6" id="pills-tabContent" >
 		  	<div class="tab-pane fade show active" id="pills-Johannesburg" role="tabpanel" aria-labelledby="pills-Johannesburg-tab">
+		  		
+		  		{% if user in Johannesburg_booking.user %}
+		  		you cannot make more than one booking
+		  		{% else %}
 			  	<div class="form-group">
 				<form action= "/add_booking" method="POST" id="add_bookingForm" >
-
 					{% csrf_token %}
+					
 					{{ form.as_p }}
 
 					<input type="submit" value="Submit" class="btn btn-secondary">
 				</form>
 				</div>
+				{% endif %}
 			</div>
 	  		<div class="tab-pane fade" id="pills-Cape_Town" role="tabpanel" aria-labelledby="pills-Cape_Town-tab">
+	  			
+	  			{% if user.johannesburg_booking_set.exists %}
+		  		you cannot make more than one booking
+		  		{% else %}
 			  	<div class="form-group">
 				<form action = "/CapeBooking" method="POST" id="CapeBookingForm" >
-
 					{% csrf_token %}
+					
 					{{ form.as_p }}
 
 					<input type="submit" value="Submit" class="btn btn-secondary">
 				</form>
 				</div>
+				{% endif %}
 			</div>
 		  	<div class="tab-pane fade" id="pills-Durban" role="tabpanel" aria-labelledby="pills-Durban-tab">
 			  	<div class="form-group">

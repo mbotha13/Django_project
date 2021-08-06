@@ -16,6 +16,8 @@ class add_bookingForm(forms.ModelForm):
 		'date' :forms.Select(attrs={'class' : 'form-control',}),
 		}
 
+	
+
 
 class CapeBookingForm(forms.ModelForm):
 	class Meta:
