@@ -1,4 +1,5 @@
 from django.shortcuts import render
+import smtplib
 from django.http import HttpResponseRedirect
 from .models import Johannesburg_booking, Date, Month,Durban_booking,Cape_Town_booking
 from django.core.mail import send_mail, EmailMessage
@@ -23,12 +24,19 @@ def booking_page(request):
 		form = add_bookingForm
 		if 'submitted' in request.GET:
 			submitted = True
-			template = render_to_string('booking_page/email_template.html',{'name':request.user.username})
-			subject = 'WTC Bootcamp Booking Confirmation'
-			message = f'Hello {request.user.username}, Your Booking has been confirmed'
-			email_from = settings.EMAIL_HOST_USER
-			recipient_list = [request.user.email,]
-			send_mail( subject, message, email_from, recipient_list)
+			with smtplib.SMTP('smtp.gmail.com', 587) as smtp:
+				smtp.ehlo()
+				smtp.starttls()
+				smtp.ehlo()
+    
+				smtp.login(settings.EMAIL_HOST_USER, settings.EMAIL_HOST_PASS)
+				template = render_to_string('booking_page/email_template.html',{'name':request.user.username})
+				subject = 'WTC Bootcamp Booking Confirmation'
+				message = f'Hello {request.user.username}, Your Booking has been confirmed'
+				msg = f'Subject: {subject}\n\n{template}'
+				email_from = settings.EMAIL_HOST_USER
+				recipient_list = [request.user.email,]
+				smtp.sendmail(email_from, recipient_list, msg)
 	return render(request, 'booking_page/add_booking.html', {'form':form, 'submitted':submitted})
 
 
@@ -47,12 +55,20 @@ def DurbanBookingPage(request):
 		form = DurbanBookingForm
 		if 'submitted' in request.GET:
 			submitted = True
-			template = render_to_string('booking_page/email_template.html',{'name':request.user.username})
-			subject = 'WTC Bootcamp Booking Confirmation'
-			message = f'Hello {request.user.username}, Your Booking has been confirmed'
-			email_from = settings.EMAIL_HOST_USER
-			recipient_list = [request.user.email,]
-			send_mail( subject, message, email_from, recipient_list)
+			with smtplib.SMTP('smtp.gmail.com', 587) as smtp:
+				smtp.ehlo()
+				smtp.starttls()
+				smtp.ehlo()
+    
+				smtp.login(settings.EMAIL_HOST_USER, settings.EMAIL_HOST_PASS)
+				bdate = form.Meta.widgets('date')
+				template = render_to_string('booking_page/email_template.html',{'name':request.user.username})
+				subject = 'WTC Bootcamp Booking Confirmation'
+				message = f'Hello {request.user.username}, Your Booking has been confirmed'
+				msg = f'Subject: {subject}\n\n{template}'
+				email_from = settings.EMAIL_HOST_USER
+				recipient_list = [request.user.email,]
+				smtp.sendmail(email_from, recipient_list, msg)
 	return render(request, 'booking_page/add_booking.html', {'form':form, 'submitted':submitted})
 
 
@@ -71,12 +87,19 @@ def CapeBookingPage(request):
 		form = CapeBookingForm
 		if 'submitted' in request.GET:
 			submitted = True
-			template = render_to_string('booking_page/email_template.html',{'name':request.user.username})
-			subject = 'WTC Bootcamp Booking Confirmation'
-			message = f'Hello {request.user.username}, Your Booking has been confirmed'
-			email_from = settings.EMAIL_HOST_USER
-			recipient_list = [request.user.email,]
-			send_mail( subject, message, email_from, recipient_list)
+			with smtplib.SMTP('smtp.gmail.com', 587) as smtp:
+				smtp.ehlo()
+				smtp.starttls()
+				smtp.ehlo()
+    
+				smtp.login(settings.EMAIL_HOST_USER, settings.EMAIL_HOST_PASS)
+				template = render_to_string('booking_page/email_template.html',{'name':request.user.username})
+				subject = 'WTC Bootcamp Booking Confirmation'
+				message = f'Hello {request.user.username}, Your Booking has been confirmed'
+				msg = f'Subject: {subject}\n\n{template}'
+				email_from = settings.EMAIL_HOST_USER
+				recipient_list = [request.user.email,]
+				smtp.sendmail(email_from, recipient_list, msg)
 
 			# email = EmailMessage(
 			# 	'WTC Bootcamp Booking Confirmation',
@@ -88,13 +111,14 @@ def CapeBookingPage(request):
 
 	return render(request, 'booking_page/add_booking.html', {'form':form, 'submitted':submitted})
 
-def Send_email(request):
-    submitted = False
-    if 'submitted' in request.GET:
-        submitted = True
-        import booking.Email.mail
+# def Send_email(request):
+#     submitted = False
+#     if 'submitted' in request.GET:
+#         submitted = True
+#         import booking.Email.mail
 		# template = render_to_string('booking_page/email_template.html',{'name':request.user})
 		# email = EmailMessage(
 		# 		'WTC Bootcamp Booking Confirmation',
 		# 		template,					settings.EMAIL_HOST_USER,
 		# 		['bothamarc9@gmail.com'],
+		# 	)
