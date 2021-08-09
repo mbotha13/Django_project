@@ -20,6 +20,8 @@ class Date(models.Model):
 	def __str__(self):
 		return self.month.name + ' '+  self.name 
 
+
+
 class Johannesburg_booking(models.Model):
 	user = models.ForeignKey(User, on_delete= models.CASCADE)
 	bootcamp_type = models.CharField('bootcamp_type',max_length=7,choices=BOOTCAMP_CHOICES,default='Live')

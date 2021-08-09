@@ -1,10 +1,92 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect,HttpResponse
-from .models import Johannesburg_booking, Date, Month,Durban_booking,Cape_Town_booking
+from booking.models import Johannesburg_booking, Date, Month,Durban_booking,Cape_Town_booking
 from .forms import add_bookingForm, CapeBookingForm, DurbanBookingForm
 import csv
 
 # Create your views here.
+
+def JohannesburgCancelation(request):
+	if Johannesburg_booking.objects.filter(user = request.user).exists():
+		booking = Johannesburg_booking.objects.get(user = request.user)
+
+	elif Cape_Town_booking.objects.filter(user = request.user).exists():
+		booking = Cape_Town_booking.objects.get(user = request.user)
+		
+	else:
+		booking = Durban_booking.objects.get(user =request.user)
+	booking.delete()
+	return redirect('/add_booking')
+
+def CapeCancelation(request):
+	if Cape_Town_booking.objects.filter(user = request.user).exists():
+		booking = Cape_Town_booking.objects.get(user = request.user)
+
+	elif Durban_booking.objects.filter(user = request.user).exists():
+		booking = Durban_Town_booking.objects.get(user = request.user)
+		
+	else:
+		booking = Johannesburg_booking.objects.get(user =request.user)
+	booking.delete()
+	return redirect('/add_booking')
+
+
+def DurbanCancelation(request):
+	if Durban_booking.objects.filter(user = request.user).exists():
+		booking = Durban_booking.objects.get(user = request.user)
+
+	elif Cape_Town_booking.objects.filter(user = request.user).exists():
+		booking = Cape_Town_booking.objects.get(user = request.user)
+		
+	else:
+		booking = Johannesburg_booking.objects.get(user =request.user)
+	booking.delete()
+	return redirect('/add_booking')
+
+
+def JohannesburgReschedule(request):
+	submitted = False
+	booking = Johannesburg_booking.objects.get(user = request.user)
+	form = add_bookingForm(request.POST or None, instance= booking)
+	if form.is_valid():
+		form.save()
+		return HttpResponseRedirect('/add_booking?submitted=True')
+	else:
+		form = CapeBookingForm
+		if 'submitted' in request.GET:
+			submitted = True
+	return render(request, 'booking_page/update_booking.html', {'form':form, 'booking':booking, 'submitted':submitted})
+
+
+def CapeReschedule(request):
+	submitted = False
+	booking = Cape_Town_booking.objects.get( user = request.user)
+	form = CapeBookingForm(request.POST or None, instance= booking)
+	if form.is_valid():
+		form.save()
+		return HttpResponseRedirect('/CapeBooking?submitted=True')
+	else:
+		form = CapeBookingForm
+		if 'submitted' in request.GET:
+			submitted = True
+	return render(request, 'booking_page/update_booking.html', {'form':form, 'booking': booking, 'submitted':submitted})
+
+
+def DurbanReschedule(request):
+	submitted = False
+	booking = Durban_booking.objects.get(user = request.user)
+	form = DurbanBookingForm(request.POST or None, instance= booking)
+	if form.is_valid():
+		form.save()
+		return HttpResponseRedirect('/DurbanBooking?submitted=True')
+	else:
+		form = DurbanBookingForm
+		if 'submitted' in request.GET:
+			submitted = True
+	return render(request, 'booking_page/update_booking.html', {'form':form, 'booking': booking, 'submitted':submitted})
+
+
+
 def GetCsv(request):
 	response = HttpResponse(content_type='text/csv')
 	response['content-Discription'] = 'attachment; filename="bookings.csv"'
@@ -76,3 +158,5 @@ def CapeBookingPage(request):
 		if 'submitted' in request.GET:
 			submitted = True
 	return render(request, 'booking_page/add_booking.html', {'form':form, 'submitted':submitted})
+
+
