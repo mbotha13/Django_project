@@ -1,42 +1,11 @@
+{% extends 'booking_page/base.html' %}
 {% load static %}
 {% load crispy_forms_tags %}
 
 
 
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Logout</title>
-    <style>
-        h2{
-            color: skyblue;
-        }
-        button{
-            width: 100;
-            height: 50px;
-            color:black;
-            
-        }
-        body
-        {
-            background-color:lavender;
-        }
 
-    </style>
-
-</head>
-
-
-<body>
-    <li>
-        {% if user.is_authenticated %}
-        <a href="{% url 'profile' %}"><button type="button">Profile</button></a>
-        <a href="{% url 'logout' %}"><button type="button">Logout</button></a>
-        {% else %}
-        <a href="{% url 'register' %}"><button type="button">Create Account</button></a> 
-        <a href="{% url 'login' %}"><button type="button">Login</button></a> 
-        {% endif %}
-    </li>
+{% block content %}
 <div>
     <div class="container">
       {% if messages %}
@@ -45,15 +14,12 @@
       {% endfor %}
     {% endif %}
     </div>
-    {% block content %}
-    {% endblock content %}
   </div>
 
   <div class="container">
     <h1>You have been Logged out</h1>
-    <h5><a href="{% url 'login' %}">Login In Again</a></h5>
+    <h5><a href="{% url 'login' %}">LogIn Again</a></h5>
 </div>
 
-</body>
-</html>
 
+{% endblock %}
