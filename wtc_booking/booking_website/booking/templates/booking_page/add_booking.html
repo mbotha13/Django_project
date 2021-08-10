@@ -31,9 +31,11 @@
 		  </li>
 		</ul>
 		<div class="tab-content col-6" id="pills-tabContent" >
-		  	<div class="tab-pane fade show active" id="pills-tab" role="tabpanel" aria-labelledby="pills-tab">
+		  	<div class="tab-pane fade show active" id="pills-Johannesburg" role="tabpanel" aria-labelledby="pills-Johannesburg-tab">
 		  		
-{% if user.johannesburg_booking_set.exists  or user.cape_town_booking_set.exists or user.durban_booking_set.exists %}
+{% if user.cape_town_booking_set.exists or user.durban_booking_set.exists %}
+				you cannot make more than one booking
+{% elif user.johannesburg_booking_set.exists %}
 				you cannot make more than one booking
 				<br>
 				<a href="{% url 'JohannesburgReschedule' %}" class="btn btn-outline-secondary ">Reschedule</a> 
@@ -53,7 +55,9 @@
 			</div>
 	  		<div class="tab-pane fade" id="pills-Cape_Town" role="tabpanel" aria-labelledby="pills-Cape_Town-tab">
 	  			
-{% if user.johannesburg_booking_set.exists  or user.cape_town_booking_set.exists or user.durban_booking_set.exists %}
+{% if user.johannesburg_booking_set.exists  or user.durban_booking_set.exists %}
+				you cannot make more than one booking
+{% elif user.cape_town_booking_set.exists %}
 				you cannot make more than one booking
 				<br>
 				<a href="{% url 'CapeReschedule'%}" class="btn btn-outline-secondary ">Reschedule</a>
@@ -73,7 +77,9 @@
 			</div>
 		  	<div class="tab-pane fade" id="pills-Durban" role="tabpanel" aria-labelledby="pills-Durban-tab">
 
-{% if user.johannesburg_booking_set.exists  or user.cape_town_booking_set.exists or user.durban_booking_set.exists %}
+{% if user.johannesburg_booking_set.exists  or user.cape_town_booking_set.exists %}
+				you cannot make more than one booking
+{% elif user.durban_booking_set.exists %}
 				you cannot make more than one booking
 				<br>
 				<a href="{% url 'DurbanReschedule' %}" class="btn btn-outline-secondary ">Reschedule</a>
