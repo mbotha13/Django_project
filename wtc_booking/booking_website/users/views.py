@@ -3,6 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from . forms import UserRegisterForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required 
+from booking.models import Johannesburg_booking, Date, Month,Durban_booking,Cape_Town_booking
 
 
 # Create your views here.
@@ -24,10 +25,21 @@ def register(request):
 
     return render(request,'users/register.html', {'form':form})
 
-@login_required()
-def profile(request):
-    return render(request, 'users/profile.html')
 
 @login_required()
 def user_profile(request):
-    return render(request, 'users/user_profile.html')
+    if Johannesburg_booking.objects.filter(user = request.user).exists():
+        bookings = Johannesburg_booking.objects.get(user = request.user)
+        campus = 'Johannesburg'
+
+    elif Cape_Town_booking.objects.filter(user = request.user).exists():
+        bookings = Cape_Town_booking.objects.get(user = request.user)
+        campus = 'Cape_Town'
+        
+    elif Johannesburg_booking.objects.filter(user = request.user).exists():
+        bookingc = Durban_booking.objects.get(user =request.user)
+        campus = 'Durban'
+    else:
+        bookingc = 'None'
+        campus = 'None'
+    return render(request, 'users/user_profile.html',{'bookings':bookings, 'campus':campus})
