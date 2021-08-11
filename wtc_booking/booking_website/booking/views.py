@@ -26,7 +26,7 @@ def CapeCancelation(request):
 		booking = Cape_Town_booking.objects.get(user = request.user)
 
 	elif Durban_booking.objects.filter(user = request.user).exists():
-		booking = Durban_Town_booking.objects.get(user = request.user)
+		booking = Durban_booking.objects.get(user = request.user)
 		
 	else:
 		booking = Johannesburg_booking.objects.get(user =request.user)
