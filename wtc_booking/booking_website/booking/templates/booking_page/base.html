@@ -1,0 +1,105 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    
+    <style>
+      body{
+        background-image: url("./body_back.jpg");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        background-color: #ddd;
+      }
+      .header{
+          background-color: #212529;
+          height: 54px;
+      }
+      .content{
+        width: 100%;
+        animation: animate 16s ease-in-out infinite;
+        min-height: 90vh;
+        background-size: cover;
+      }
+      @keyframes animate{
+        0%,100%{
+          background-image: url("{% static '/images/01.jpg' %}");
+        }
+        20%{
+          background-image: url("{% static '/images/02.jpg' %}");
+        }
+        40%{
+          background-image: url("{% static '/images/03.jpg' %}");
+        }
+        60%{
+          background-image: url("{% static '/images/04.jpg' %}");
+        }
+        80%{
+          background-image: url("{% static '/images/05.jpg' %}");
+        }
+      }
+      .main-content{
+        color: antiquewhite;
+        background: linear-gradient(to right top, #212529, #6cdbed);
+        min-height: 90vh;
+        text-align: left;
+      }
+      .footer{
+        color: antiquewhite;
+        background-color: #212529;
+        height: 40px;
+      }
+      .tab-content{
+        background: white;
+        background: linear-gradient(to right top, rgba(255,255,255,0.5), rgba(255,255,255,0.2));
+        border-radius: 2rem;
+        box-shadow: 0 19px 38px rgba(0,0,0,0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+      }
+      .status input{
+        width: 50%;
+      }
+      .redo{
+        background: white;
+        background: linear-gradient(to right top, rgba(255,255,255,0.5), rgba(255,255,255,0.2));
+        border-radius: 2rem;
+        box-shadow: 0 19px 38px rgba(0,0,0,0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+      }
+    </style>
+    <title>WTC Booking</title>
+  </head>
+  <body>
+        {% include 'booking_page/navbar.html' %}
+
+        <div class="content">
+            <div class="row">
+                <div class="col-3 sidebar"><!--left sidebar start-->
+                    
+                </div><!--left sidebar end-->
+                <div class="col-md-6 col-12 main-content"><!--main content starts-->                
+                    {% block content %}
+
+
+                    {% endblock %}
+                </div><!--main content ends-->
+                <div class="col-3 sidebar"><!--right sidebar start-->
+                    
+                </div><!--right sidebar end-->
+            </div>
+        </div>
+
+        <div class="footer">
+
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+   
+  </body>
+</html>
