@@ -62,8 +62,8 @@ def JohannesburgReschedule(request):
 				campus = 'Johannesburg'
     
 				smtp.login(settings.EMAIL_HOST_USER, settings.EMAIL_HOST_PASS)
-				template = render_to_string('booking_page/email_template.html',{'name':request.user.username, 'campus':campus, 'booking':booking})
-				subject = 'WTC Bootcamp Booking Confirmation'
+				template = render_to_string('booking_page/reschedule_email.html',{'name':request.user.username, 'campus':campus, 'booking':booking})
+				subject = 'WTC Bootcamp Booking Rescheduled'
 				message = f'Hello {request.user.username}, Your Booking has been confirmed'
 				msg = f'Subject: {subject}\n\n{template}'
 				email_from = settings.EMAIL_HOST_USER
@@ -92,7 +92,7 @@ def CapeReschedule(request):
 				campus = 'Cape_Town'
     
 				smtp.login(settings.EMAIL_HOST_USER, settings.EMAIL_HOST_PASS)
-				template = render_to_string('booking_page/email_template.html',{'name':request.user.username, 'campus':campus, 'booking':booking})
+				template = render_to_string('booking_page/reschedule_email.html',{'name':request.user.username, 'campus':campus, 'booking':booking})
 				subject = 'WTC Bootcamp Booking Confirmation'
 				message = f'Hello {request.user.username}, Your Booking has been confirmed'
 				msg = f'Subject: {subject}\n\n{template}'
@@ -122,7 +122,7 @@ def DurbanReschedule(request):
 				campus = 'Durban'
     
 				smtp.login(settings.EMAIL_HOST_USER, settings.EMAIL_HOST_PASS)
-				template = render_to_string('booking_page/email_template.html',{'name':request.user.username, 'campus':campus, 'booking':booking})
+				template = render_to_string('booking_page/reschedule_email.html',{'name':request.user.username, 'campus':campus, 'booking':booking})
 				subject = 'WTC Bootcamp Booking Confirmation'
 				message = f'Hello {request.user.username}, Your Booking has been confirmed'
 				msg = f'Subject: {subject}\n\n{template}'

@@ -37,9 +37,9 @@ def user_profile(request):
         campus = 'Cape_Town'
         
     elif Johannesburg_booking.objects.filter(user = request.user).exists():
-        bookingc = Durban_booking.objects.get(user =request.user)
+        bookings = Durban_booking.objects.get(user =request.user)
         campus = 'Durban'
     else:
-        bookingc = 'None'
+        bookings = 'None'
         campus = 'None'
     return render(request, 'users/user_profile.html',{'bookings':bookings, 'campus':campus})
