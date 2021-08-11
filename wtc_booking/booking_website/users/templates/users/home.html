@@ -1,0 +1,30 @@
+{% extends 'booking_page/base.html' %}
+{% load static %}
+
+
+{% block content %}
+<div id='subs-content' role='main'>
+    <div class='container'>
+        <div class='row'>
+            <div class='span6 form-container man'>
+            <h2>Welcome WeThinkCoder!</h2>
+            <hr>
+            
+            <div>
+                <div class="container">
+                  {% if messages %}
+                  {% for message in messages %}
+                    <div class="alert alert-{{message.tags}}">{{message}}</div>
+                  {% endfor %}
+                {% endif %}
+                </div>
+                
+                
+              </div>
+    
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+

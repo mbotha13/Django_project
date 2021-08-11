@@ -1,0 +1,25 @@
+{% extends 'booking_page/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+
+
+{% block content %}
+<div>
+    <div class="container">
+      {% if messages %}
+      {% for message in messages %}
+        <div class="alert alert-{{message.tags}}">{{message}}</div>
+      {% endfor %}
+    {% endif %}
+    </div>
+  </div>
+
+  <div class="container">
+    <h1>You have been Logged out</h1>
+    <h5><a href="{% url 'login' %}">LogIn Again</a></h5>
+</div>
+
+
+{% endblock %}
